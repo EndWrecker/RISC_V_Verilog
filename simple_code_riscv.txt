@@ -1,0 +1,123 @@
+module PROCESSOR (
+    // Inputs
+    input clock,
+    input reset,
+    // Outputs
+    output zero
+);
+    // Instantiate components
+    ALU alu();
+    ControlUnit controlUnit();
+    RegisterFile registerFile();
+    INST_MEM instructionMemory();
+    Datapath datapath();
+
+    // Connect components
+
+    // Clock and reset signals
+
+    // Execute instructions based on control signals
+
+endmodule
+
+
+
+module ALU (
+    // Inputs
+    input [31:0] operand1,
+    input [31:0] operand2,
+    input [2:0] aluOp,
+    // Outputs
+    output [31:0] result,
+    output zero
+);
+    // ALU implementation logic goes here
+
+endmodule
+
+
+module ControlUnit (
+    // Inputs
+    input [6:0] opcode,
+    input [2:0] funct3,
+    // Outputs
+    output [2:0] aluOp,
+    output reg regWrite
+);
+    // Control Unit implementation logic goes here
+
+endmodule
+
+
+
+module RegisterFile (
+    // Inputs
+    input [4:0] readRegister1,
+    input [4:0] readRegister2,
+    input [4:0] writeRegister,
+    input [31:0] writeData,
+    // Outputs
+    output [31:0] readData1,
+    output [31:0] readData2,
+    input reg regWrite
+);
+    // Register File implementation logic goes here
+
+endmodule
+
+
+module INST_MEM (
+    // Inputs
+    input [31:0] PC,
+    input reset,
+    // Outputs
+    output [31:0] Instruction_Code
+);
+    // Instruction memory implementation logic goes here
+
+endmodule
+
+
+module Datapath (
+    // Inputs
+    input [4:0] read_reg_num1,
+    input [4:0] read_reg_num2,
+    input [4:0] write_reg,
+    input [3:0] alu_control,
+    input regwrite,
+    input clock,
+    input reset,
+    // Outputs
+    output zero_flag
+);
+    // Datapath implementation logic goes here
+
+endmodule
+
+
+module IFU (
+    // Inputs
+    input clock,
+    input reset,
+    // Outputs
+    output [31:0] instructionCode
+);
+    // IFU implementation logic goes here
+
+endmodule
+
+
+
+module stimulus ();
+    // Inputs
+    reg clock;
+    reg reset;
+    // Outputs
+    wire zero;
+
+    // Instantiate the processor
+    PROCESSOR test_processor(clock, reset, zero);
+
+    // Testbench implementation goes here
+
+endmodule
